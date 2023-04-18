@@ -76,6 +76,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 
 [node name="Spritesheet" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 5
 position = Vector2(64, 64)
 texture = ExtResource("1_lc16y")
@@ -84,5 +85,5 @@ texture = ExtResource("1_lc16y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 sprite_frames = SubResource("SpriteFrames_phf32")
-animation = &"walk_f"
-frame_progress = 0.669211
+animation = &"idle"
+frame_progress = 0.187231
