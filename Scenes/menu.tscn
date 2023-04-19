@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn04cn3p8x3w3"]
+[gd_scene load_steps=2 format=3 uid="uid://dn04cn3p8x3w3"]
 
 [ext_resource type="Texture2D" uid="uid://d256r2e4m1kkx" path="res://Assets/spritesheet.png" id="1_lc16y"]
-[ext_resource type="PackedScene" uid="uid://c1u2a5y656pho" path="res://Objects/Player.tscn" id="2_i35st"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -17,5 +16,3 @@ visible = false
 texture_filter = 5
 position = Vector2(64, 64)
 texture = ExtResource("1_lc16y")
-
-[node name="Player" parent="." instance=ExtResource("2_i35st")]

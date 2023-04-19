@@ -3,84 +3,77 @@
 [ext_resource type="Script" path="res://Code/Player.gd" id="1_psg58"]
 [ext_resource type="Texture2D" uid="uid://bodegr88owj5j" path="res://Assets/spriteanime.png" id="2_lnukc"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6sxy0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_78j6j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl7fv"]
 atlas = ExtResource("2_lnukc")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 15, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ca5ox"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ues5l"]
 atlas = ExtResource("2_lnukc")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(15, 0, 15, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_woqjl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygqf6"]
 atlas = ExtResource("2_lnukc")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(30, 0, 15, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kwyww"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6sn8"]
 atlas = ExtResource("2_lnukc")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(45, 0, 15, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1p0c8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vf6k"]
 atlas = ExtResource("2_lnukc")
-region = Rect2(64, 0, 16, 16)
+region = Rect2(60, 0, 15, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_phf32"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_78j6j")
+"texture": SubResource("AtlasTexture_sl7fv")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"walk_b",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ca5ox")
+"texture": SubResource("AtlasTexture_ues5l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_woqjl")
+"texture": SubResource("AtlasTexture_ygqf6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kwyww")
+"texture": SubResource("AtlasTexture_p6sn8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1p0c8")
+"texture": SubResource("AtlasTexture_8vf6k")
 }],
 "loop": true,
-"name": &"walk_f",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"walk_l",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"walk_r",
-"speed": 5.0
+"name": &"walk",
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q84ot"]
 radius = 6.0
 
-[node name="Player" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_6sxy0")
-gravity_scale = 0.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jdji"]
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+slide_on_ceiling = false
 script = ExtResource("1_psg58")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_phf32")
-animation = &"walk_f"
-autoplay = "walk_f"
+animation = &"idle"
+autoplay = "walk"
+frame_progress = 0.520291
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_q84ot")
+
+[node name="CollectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_6jdji")
+
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

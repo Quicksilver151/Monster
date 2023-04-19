@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckm83ps0uw3oc"]
+
+[ext_resource type="Texture2D" uid="uid://cojjtd8bmg2kk" path="res://Assets/monster.tres" id="1_kqsk4"]
+
+[node name="MonsterDrink" type="Area2D" groups=["collectable"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kqsk4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -9, 5, 3, -1, 8, -8, -4)
