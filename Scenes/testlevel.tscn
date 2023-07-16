@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0ojwdsi0y4lw"]
+[gd_scene load_steps=13 format=3 uid="uid://b0ojwdsi0y4lw"]
 
+[ext_resource type="Script" path="res://Scenes/testlevel.gd" id="1_8bsja"]
 [ext_resource type="PackedScene" uid="uid://cc2he5q4n8dkv" path="res://Objects/Tiles.tscn" id="1_65an1"]
 [ext_resource type="PackedScene" uid="uid://c1u2a5y656pho" path="res://Objects/Player.tscn" id="2_idjx4"]
 [ext_resource type="Texture2D" uid="uid://d256r2e4m1kkx" path="res://Assets/spritesheet.png" id="2_owusj"]
@@ -70,9 +71,22 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(77, 96)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasLayer/MarginContainer/VBoxContainer/MarginContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_4ykts"]
 resource_name = "appear"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -104,7 +118,7 @@ tracks/2/path = NodePath("../Camera2D2:zoom")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 1),
+"times": PackedFloat32Array(0.8, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(2, 2), Vector2(1, 1)]
@@ -116,10 +130,22 @@ tracks/3/path = NodePath("../Camera2D2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 1),
+"times": PackedFloat32Array(0.8, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(77, 96), Vector2(171, 128)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasLayer/MarginContainer/VBoxContainer/MarginContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3k0rf"]
@@ -130,6 +156,7 @@ _data = {
 
 [node name="testlevel" type="Node2D"]
 position = Vector2(-1, 0)
+script = ExtResource("1_8bsja")
 
 [node name="TileMap" parent="." instance=ExtResource("1_65an1")]
 layer_0/z_index = -1
@@ -170,7 +197,6 @@ position = Vector2(16, 0)
 texture = SubResource("AtlasTexture_u7jl5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pod"]
-autoplay = "appear"
 libraries = {
 "": SubResource("AnimationLibrary_3k0rf")
 }
@@ -186,34 +212,27 @@ position = Vector2(176, 192)
 
 [node name="MonsterDrink2" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(225, 176)
-rotation = -0.0218683
 
 [node name="MonsterDrink3" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(257, 144)
-rotation = 0.824472
 
 [node name="MonsterDrink4" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(97, 96)
-rotation = 1.34815
 
 [node name="MonsterDrink5" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(89, 168)
 
 [node name="MonsterDrink9" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(10, 138)
-rotation = 0.785397
 
 [node name="MonsterDrink6" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(49, 200)
-rotation = 2.35619
 
 [node name="MonsterDrink7" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(176, 224)
-rotation = 2.35619
 
 [node name="MonsterDrink8" parent="Monsters" instance=ExtResource("3_4jlx3")]
 position = Vector2(289, 184)
-rotation = 2.05441
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
